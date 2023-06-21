@@ -22,6 +22,12 @@ class User
     #[ORM\Column]
     private ?int $age = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cin = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +65,30 @@ class User
     public function setAge(int $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getCin(): ?string
+    {
+        return $this->cin;
+    }
+
+    public function setCin(?string $cin): self
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

@@ -12,6 +12,8 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Age</th>
+                <th>CIN</th>
+                <th>Adresse</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.age }}</td>
+                <td>{{ user.cin }}</td>
+                <td>{{ user.adresse }}</td>
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
