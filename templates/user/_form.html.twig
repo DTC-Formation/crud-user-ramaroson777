@@ -1,4 +1,8 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    <div class="row" style="gap : 20px; justify-content : center">
+        <a href="{{ path('app_user_index') }}" class="btn btn-danger col-lg-5">Annuler</a> 
+        <button class="btn btn-success col-lg-5">{{ button_label|default('Enregistrer') }}</button>
+    </div>
 {{ form_end(form) }}

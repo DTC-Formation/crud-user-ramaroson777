@@ -3,9 +3,9 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <p class="text-center h1">Liste des utilisateurs</p>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -26,9 +26,15 @@
                 <td>{{ user.age }}</td>
                 <td>{{ user.cin }}</td>
                 <td>{{ user.adresse }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                <td style="display:flex;">
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}"><img src="{{ asset('images/icons/show.png') }}" alt="Detail utilisateur" style="width: 25px;"></a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}"><img src="{{ asset('images/icons/edit.png') }}" alt="Modifier utilisateur" style="width: 25px;"></a>
+                    <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Voulez-vous supprier cet utilisateur ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                        <button class="btn p-0"><img src="{{ asset('images/icons/delete.png') }}" alt="Supprimer utilisateur" style="width: 25px;"></button>
+                    </form>
+                    
+                    {# {{ include('user/_delete_form.html.twig') }} #}
                 </td>
             </tr>
         {% else %}
@@ -39,5 +45,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
 {% endblock %}
