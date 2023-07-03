@@ -5,6 +5,17 @@
 {% block body %}
     <p class="text-center h1">Ajout utilisateur</p>
 
-    {{ include('user/_form.html.twig') }}
+    {{ form_start(form) }}
+        {{ form_row(form._token) }} {# Ajout du champ CSRF token #}
+        {{ form_row( form.nom,{ "attr":{"placeholder":"votre identifiant"},"label":"Votre nom"} ) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.age) }}
+        {{ form_row(form.cin) }}
+        {{ form_row(form.adresse) }}
+        <div class="row" style="gap : 20px; justify-content : center">
+            <a href="{{ path('app_user_index') }}" class="btn btn-danger col-lg-5">Annuler</a> 
+            <button class="btn btn-success col-lg-5">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    {{ form_end( form,{render_rest:false} ) }}
 
 {% endblock %}
